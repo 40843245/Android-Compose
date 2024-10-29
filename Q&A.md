@@ -94,13 +94,14 @@ fun CustomOutlinedTextField() {
 }
 ```
 
-### Key Points:
+##### Key Points
 1. **Text Alignment**: Use `textAlign` in the `textStyle` to set the alignment (e.g., `TextAlign.Start`, `TextAlign.Center`, or `TextAlign.End`).
 2. **Modifier**: Use `Modifier.fillMaxWidth()` to ensure the `OutlinedTextField` takes the full width of its container.
 3. **Styling**: You can customize the font size, color, and other text properties through `textStyle`.
 
-### Notes:
+##### Notes
 - The `OutlinedTextField` will respect the `textAlign` property, but ensure that the surrounding layout allows for the desired alignment.
 - The `TextFieldDefaults.outlinedTextFieldColors` can be customized to change the background color or the colors when focused/unfocused.
 
 This setup should give you a good starting point for arranging text within an `OutlinedTextField`. Let me know if you need more specific customizations!
+

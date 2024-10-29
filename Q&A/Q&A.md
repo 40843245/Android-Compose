@@ -53,63 +53,57 @@ fun CustomOutlinedTextField() {
 
 For answer from chatGPT, see this [article](https://github.com/40843245/Android-Compose/blob/main/Q%26A/How%20to%20arrange%20value%20in%20OutlinedTextField%20in%20Android%20Compose%3F.md)
 
-### Q2: How to arrange value in ExposedDropdownMenu in Android Compose?
-To arrange the text for each item in `ExposedDropdownMenu` (i.e. `ExposedDropdownMenuItem` at material3), one just have to arrange the text as arrange `Text` component in `text` argument of `ExposedDropdownMenuItem`)
+### Q2: How to align Text in ExposedDropdownMenuItem in Android Compose?
+To arrange the text for each item in `ExposedDropdownMenu` (i.e. `ExposedDropdownMenuItem` at material3), one have to add a `Box` component under each `ExposedDropdownMenuItem` component, setting the alignment and arrangement of `Box`, lastly, put the `Text` in the `Box`. (Originally, `Text` is directly child of `ExposedDropdownMenuItem`)
 
 For example, source code from chatGPT.
 
-```
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun CustomExposedDropdownMenu() {
+```@Composable
+fun AlignedDropdownMenu() {
+    val items = listOf("Orange", "Apple", "Banana", "Grape")
+    var selectedItem by remember { mutableStateOf("") }
     var expanded by remember { mutableStateOf(false) }
-    var selectedOption by remember { mutableStateOf("") }
-    val options = listOf("Option 1", "Option 2", "Option 3")
 
-    ExposedDropdownMenuBox(expanded = expanded, onExpandedChange = { expanded = !expanded }) {
-        TextField(
-            value = selectedOption,
-            onValueChange = { /* no-op */ },
-            readOnly = true,
-            label = { Text("Select an option") },
+    ExposedDropdownMenuBox(
+        expanded = expanded,
+        onExpandedChange = { expanded = !expanded }
+    ) {
+        OutlinedTextField(
+            value = selectedItem,
+            onValueChange = { selectedItem = it },
+            label = { Text("Select Fruit") },
             trailingIcon = {
-                Icon(Icons.Default.ArrowDropDown, contentDescription = null)
+                Icon(
+                    imageVector = if (expanded) Icons.Filled.ArrowDropUp else Icons.Filled.ArrowDropDown,
+                    contentDescription = null
+                )
             },
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.menuAnchor()
         )
 
         ExposedDropdownMenu(
             expanded = expanded,
-            onDismissRequest = { expanded = false },
-            modifier = Modifier.fillMaxWidth()
+            onDismissRequest = { expanded = false }
         ) {
-            options.forEach { option ->
+            items.forEach { item ->
                 DropdownMenuItem(
-                    text = {
-                        Text(
-                            text = option,
-                            textAlign = TextAlign.Start,
-                            fontSize = 16.sp
-                        )
-                    },
                     onClick = {
-                        selectedOption = option
+                        selectedItem = item
                         expanded = false
                     }
-                )
+                ) {
+                    // Center-align the text
+                    Box(
+                        modifier = Modifier.fillMaxWidth(),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(text = item)
+                    }
+                }
             }
         }
     }
 }
 ```
 
-For answer from chatGPT, see this [article](https://github.com/40843245/Android-Compose/blob/main/Q%26A/How%20to%20arrange%20value%20in%20ExposedDropdownMenu%20in%20Android%20Compose.md).
+For answer from chatGPT, see this [article]([https://github.com/40843245/Android-Compose/blob/main/Q%26A/How%20to%20arrange%20value%20in%20ExposedDropdownMenu%20in%20Android%20Compose.md](https://github.com/40843245/Android-Compose/blob/main/Q&A/How%20to%20align%20Text%20in%20ExposedDropdownMenuItem%20in%20Android%20Compose.md)).

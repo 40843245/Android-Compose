@@ -45,3 +45,5 @@ fun PreviewUpdate() {
 1. second page of `CH3-UiProgram` pdf file under [`黃彬華老師 Android App`](https://www.dropbox.com/scl/fo/9k2go2pqo1efyde1od48w/AH6RTHa3tG0ZnuSSMS5SImk?rlkey=y073ekayhsbagjwfo241sensf&e=1&dl=0)
    
 <img width="1165" alt="image" src="https://github.com/user-attachments/assets/1949cd99-6539-4a56-adc9-1a7d8d34b54e">
+
+2. [Preview your UI with composable previews(Android official docs)](https://developer.android.com/develop/ui/compose/tooling/previews)

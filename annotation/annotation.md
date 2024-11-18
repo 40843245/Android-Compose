@@ -5,7 +5,7 @@
 ## `@Immutable`
 `@Immutable` annotation will mark the object is `Immutable`. Thus, this object is immutable for optimization in Android Compose. With this annotation, there are no unnecessary recomposition at runtime. Otherwise, there may be unncessary recomposition at runtime.
 
-> [!TIPS]
+> [!TIP]
 > There are 2 ways to make it stable again, which are using @Stable and @Immutable.
 >
 > Using `@Stable`, as mentioned above, it means that the value can be changed, but when it does change, we have to notify Compose compiler. The way to do it is through using `mutableStateOf()`.

@@ -11,12 +11,12 @@ To create a new project in Android Studio that inherits from AppCompatActivity, 
 5. Click "Next".
 6. Configure Your Project:
 
-  1. Enter the name of your application.
-  2. Specify the package name and save location.
-  3. Choose the language (Java or Kotlin).
-  4. Set the minimum API level.
-  5. Click "Finish".
-  6. Modify the MainActivity:
+  1) Enter the name of your application.
+  2) Specify the package name and save location.
+  3) Choose the language (Java or Kotlin).
+  4) Set the minimum API level.
+  5) Click "Finish".
+  6) Modify the MainActivity:
 
     By default, the MainActivity will extend AppCompatActivity.
     If it doesn't, open MainActivity.java or MainActivity.kt and ensure it extends AppCompatActivity:
